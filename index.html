@@ -32,7 +32,12 @@
             max-width: 1200px;
             margin: 0 auto;
         }
-        .logo-container img { height: 40px; filter: drop-shadow(0 0 8px var(--accent)); }
+        
+        /* LARGER LOGO */
+        .logo-container img { 
+            height: 55px; 
+            filter: drop-shadow(0 0 12px var(--accent)); 
+        }
         
         .header-actions { display: flex; align-items: center; gap: 12px; }
         
@@ -85,7 +90,7 @@
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
-        /* HERO SECTION */
+        /* MAIN CONTENT */
         .container { 
             padding: 40px 20px; 
             display: flex; 
@@ -105,9 +110,9 @@
             text-transform: uppercase;
         }
 
-        /* SLIGHTLY SMALLER HEADLINE */
+        /* ADJUSTED HEADLINE SIZE */
         h1 { 
-            font-size: clamp(3rem, 14vw, 5rem); 
+            font-size: clamp(2.8rem, 13vw, 4.8rem); 
             font-weight: 900; 
             line-height: 0.85; 
             margin-bottom: 20px; 
@@ -158,20 +163,27 @@
             font-weight: 800;
         }
 
-        /* OWNER SECTION */
-        .owner-section { padding: 20px; display: flex; flex-direction: column; align-items: center; }
-        .owner-skin { width: 160px; height: auto; margin-bottom: 12px; filter: drop-shadow(0 15px 25px rgba(0,0,0,0.6)); }
+        /* DECORATIVE LOGO */
+        .center-logo-decor {
+            width: 160px; /* Made bigger */
+            height: auto;
+            margin: 20px auto 50px;
+            opacity: 0.9;
+            filter: drop-shadow(0 0 25px rgba(0, 173, 252, 0.4));
+        }
+
+        /* OWNER SECTION AT THE BOTTOM */
+        .owner-section { 
+            padding: 60px 20px; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center;
+            border-top: 1px solid var(--border-color);
+            width: 100%;
+        }
+        .owner-skin { width: 160px; height: auto; margin-bottom: 15px; filter: drop-shadow(0 15px 25px rgba(0,0,0,0.6)); }
         .owner-title { font-size: 1.8rem; font-weight: 800; margin-bottom: 10px; }
         .owner-quote { font-style: italic; color: #8fa3ad; max-width: 420px; line-height: 1.5; font-size: 1rem; }
-
-        /* DECORATIVE LOGO AT BOTTOM */
-        .bottom-logo {
-            width: 140px;
-            height: auto;
-            margin: 40px auto 0;
-            opacity: 0.8;
-            filter: drop-shadow(0 0 20px rgba(0, 173, 252, 0.3));
-        }
 
         .toast {
             position: fixed;
@@ -185,7 +197,6 @@
             font-weight: 800;
             display: none;
             z-index: 2000;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
     </style>
 </head>
@@ -235,13 +246,13 @@
             </a>
         </div>
 
+        <img src="logo.png" class="center-logo-decor" alt="Allay Decorative Logo">
+
         <div class="owner-section">
             <img src="102015.jpg" class="owner-skin" alt="Owner Skin">
             <h2 class="owner-title">The Owner 👑</h2>
             <p class="owner-quote">"I created AllaySMP from scratch to prove that a small idea, strong dedication, and continuous improvement can turn into a competitive and optimized SMP for everyone."</p>
         </div>
-
-        <img src="logo.png" class="bottom-logo" alt="AllaySMP Decorative Logo">
     </div>
 
     <div class="toast" id="toast">IP COPIED: allaysmp.pro</div>
