@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AllaySMP | Home</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --accent: #00adfc;
@@ -15,17 +15,14 @@
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
-
         body {
             font-family: 'Poppins', sans-serif;
             background: radial-gradient(circle at top, #001e2e 0%, #050a0f 100%);
             color: #fff;
             min-height: 100vh;
-            overflow-x: hidden;
             text-align: center;
         }
 
-        /* HEADER */
         .header-top {
             display: flex;
             justify-content: space-between;
@@ -34,18 +31,8 @@
             max-width: 1200px;
             margin: 0 auto;
         }
-
-        .logo-container img {
-            height: 45px;
-            filter: drop-shadow(0 0 8px var(--accent));
-        }
-
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
+        .logo-container img { height: 45px; filter: drop-shadow(0 0 8px var(--accent)); }
+        
         .discord-btn {
             background: rgba(88, 101, 242, 0.1);
             padding: 10px;
@@ -56,55 +43,10 @@
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            transition: 0.3s;
         }
 
-        .discord-btn:hover { background: rgba(88, 101, 242, 0.3); }
-
-        .menu-btn {
-            font-size: 1.5rem;
-            cursor: pointer;
-            background: rgba(255,255,255,0.05);
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* SIDE MENU */
-        .side-menu {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 280px;
-            height: 100%;
-            background: #0b1218;
-            z-index: 1000;
-            transition: 0.4s;
-            padding: 40px 25px;
-            box-shadow: -10px 0 30px rgba(0,0,0,0.5);
-            text-align: left;
-        }
-
-        .side-menu.active { right: 0; }
-
-        .side-menu a {
-            display: block;
-            color: #fff;
-            text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: 600;
-            padding: 18px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .close-menu { font-size: 2rem; cursor: pointer; margin-bottom: 20px; }
-
-        /* HERO */
         .container { padding: 40px 20px; display: flex; flex-direction: column; align-items: center; }
-
+        
         .status-pill {
             display: inline-flex;
             border: 1px solid rgba(255, 77, 77, 0.3);
@@ -112,45 +54,15 @@
             border-radius: 50px;
             font-size: 11px;
             font-weight: 800;
-            letter-spacing: 1px;
             margin-bottom: 15px;
-            text-transform: uppercase;
             color: #ff4d4d;
         }
 
-        h1 {
-            font-size: clamp(2.5rem, 10vw, 4rem);
-            font-weight: 800;
-            line-height: 1;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
+        h1 { font-size: clamp(2.5rem, 10vw, 4rem); font-weight: 800; line-height: 1.1; margin-bottom: 20px; text-transform: uppercase; }
+        h1 span { display: block; color: #00adfc; } /* Updated Header Color */
 
-        h1 span {
-            display: block;
-            background: linear-gradient(to bottom, #fff, var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .description {
-            color: #8fa3ad;
-            margin-bottom: 40px;
-            max-width: 500px;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        /* BOXES */
-        .box-stack {
-            width: 100%;
-            max-width: 450px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-bottom: 50px;
-        }
-
+        .box-stack { width: 100%; max-width: 450px; display: flex; flex-direction: column; gap: 15px; margin-bottom: 50px; }
+        
         .card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -164,14 +76,12 @@
             color: inherit;
             transition: 0.3s;
         }
-
         .card:hover { border-color: var(--accent); transform: translateY(-2px); }
-
-        .info { text-align: left; flex-grow: 1; }
-        .info h3 { font-size: 1.3rem; margin: 0; color: var(--accent); } 
-        .info p { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; }
         
-        /* Requested Sub-text Colors */
+        .info { text-align: left; flex-grow: 1; }
+        .info h3 { font-size: 1.3rem; margin: 0; color: #fff; } /* IP text is now White */
+        .info p { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-top: 4px; }
+        
         .ip-sub { color: #00adfc; }
         .season-sub { color: #00fcfc; }
 
@@ -184,80 +94,29 @@
             font-weight: 600;
         }
 
-        /* OWNER SECTION */
-        .owner-section {
-            margin-top: 10px;
-            padding: 30px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+        .owner-section { margin-top: 10px; padding: 30px 20px; display: flex; flex-direction: column; align-items: center; }
+        .owner-skin { width: 160px; height: auto; margin-bottom: 15px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5)); }
+        .owner-title { font-size: 1.8rem; font-weight: 700; margin-bottom: 10px; }
+        .owner-quote { font-style: italic; color: #8fa3ad; max-width: 450px; line-height: 1.6; font-size: 0.95rem; }
 
-        .owner-skin {
-            width: 160px;
-            height: auto;
-            margin-bottom: 15px;
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
-        }
-
-        .owner-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .owner-quote {
-            font-style: italic;
-            color: #8fa3ad;
-            max-width: 450px;
-            line-height: 1.6;
-            font-size: 0.95rem;
-        }
-
-        .toast {
-            position: fixed;
-            bottom: 30px;
-            background: var(--accent);
-            color: #000;
-            padding: 12px 25px;
-            border-radius: 10px;
-            font-weight: 700;
-            display: none;
-            z-index: 100;
-        }
+        .toast { position: fixed; bottom: 30px; background: var(--accent); color: #000; padding: 12px 25px; border-radius: 10px; font-weight: 700; display: none; z-index: 100; }
     </style>
 </head>
 <body>
 
     <div class="header-top">
-        <div class="logo-container">
-            <img src="logo.png" alt="Allay Logo">
-        </div>
+        <div class="logo-container"><img src="logo.png" alt="Allay Logo"></div>
         <div class="header-actions">
             <a href="https://discord.gg/PezKpUAAuA" class="discord-btn">
                 <img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" style="width: 24px; filter: invert(1);">
             </a>
-            <div class="menu-btn" onclick="toggleMenu()">☰</div>
+            <div style="font-size: 1.5rem; background: rgba(255,255,255,0.05); width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer;">☰</div>
         </div>
-    </div>
-
-    <div class="side-menu" id="sideMenu">
-        <div class="close-menu" onclick="toggleMenu()">×</div>
-        <a href="#">HOME</a>
-        <a href="https://store.allaysmp.pro/">STORE</a>
-        <a href="https://minecraft-mp.com/server/350645/vote/">VOTE</a>
-        <a href="https://discord.gg/PezKpUAAuA">DISCORD</a>
     </div>
 
     <div class="container">
         <div class="status-pill">❤ VALENTINE'S EVENT LIVE →</div>
-
         <h1>WELCOME TO<br><span>ALLAYSMP</span></h1>
-        
-        <p class="description">
-            The ultimate competitive PvP network in Asia. Experience custom rankings, 
-            clan wars, and optimized gameplay.
-        </p>
 
         <div class="box-stack">
             <div class="card" onclick="copyIP()">
@@ -270,10 +129,9 @@
 
             <a href="https://discord.gg/PezKpUAAuA" class="card" target="_blank">
                 <div class="info">
-                    <p style="margin-bottom: 2px; color: #fff; opacity: 0.6;">● LIVE COMMUNITY</p>
-                    <h3 style="color: #fff;">Discord Server</h3>
+                    <h3 style="color: #fff;">Discord Members</h3>
                 </div>
-                <div class="badge" id="discord-count">... Online</div>
+                <div class="badge" id="discord-count">... Members</div>
             </a>
         </div>
 
@@ -287,10 +145,6 @@
     <div class="toast" id="toast">IP Copied! allaysmp.pro</div>
 
     <script>
-        function toggleMenu() {
-            document.getElementById("sideMenu").classList.toggle("active");
-        }
-
         function copyIP() {
             navigator.clipboard.writeText("allaysmp.pro");
             const t = document.getElementById("toast");
@@ -300,28 +154,24 @@
 
         async function updateStats() {
             try {
-                // Using a more robust Bedrock query API to ensure accurate player counts
-                const mcRes = await fetch("https://api.mcstatus.io/v2/status/bedrock/allaysmp.pro");
+                // Java Protocol Fetch (Standard for Minecraft Java Edition)
+                const mcRes = await fetch("https://api.mcstatus.io/v2/status/java/allaysmp.pro");
                 const mcData = await mcRes.json();
                 
                 if(mcData.online) {
-                    // This pulls your actual live count (e.g., 50+)
                     document.getElementById("player-count").innerText = `${mcData.players.online} / ${mcData.players.max}`;
                 } else {
                     document.getElementById("player-count").innerText = "OFFLINE";
                 }
 
-                // Discord Stats
                 const dsRes = await fetch("https://discord.com/api/v9/invites/PezKpUAAuA?with_counts=true");
                 const dsData = await dsRes.json();
-                document.getElementById("discord-count").innerText = `${dsData.approximate_presence_count} Online`;
-            } catch (e) { 
-                console.error("API Error"); 
-            }
+                document.getElementById("discord-count").innerText = `${dsData.approximate_member_count} Members`;
+            } catch (e) { console.error("API Error"); }
         }
 
         updateStats();
-        setInterval(updateStats, 30000); // Updates every 30 seconds
+        setInterval(updateStats, 20000);
     </script>
 </body>
 </html>
