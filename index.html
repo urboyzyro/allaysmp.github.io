@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AllaySMP</title>
+    <title>AllaySMP | Home</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --accent: #00adfc;
+            --secondary: #00fcfc;
             --bg: #050a0f;
             --card-bg: rgba(255, 255, 255, 0.04);
             --border-color: rgba(255, 255, 255, 0.1);
@@ -55,7 +56,10 @@
             align-items: center;
             justify-content: center;
             text-decoration: none;
+            transition: 0.3s;
         }
+
+        .discord-btn:hover { background: rgba(88, 101, 242, 0.3); }
 
         .menu-btn {
             font-size: 1.5rem;
@@ -137,7 +141,7 @@
             line-height: 1.6;
         }
 
-        /* CARDS */
+        /* BOXES */
         .box-stack {
             width: 100%;
             max-width: 450px;
@@ -165,7 +169,11 @@
 
         .info { text-align: left; flex-grow: 1; }
         .info h3 { font-size: 1.3rem; margin: 0; color: var(--accent); } 
-        .info p { font-size: 0.75rem; font-weight: 700; color: #fff; opacity: 0.6; text-transform: uppercase; }
+        .info p { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; }
+        
+        /* Requested Sub-text Colors */
+        .ip-sub { color: #00adfc; }
+        .season-sub { color: #00fcfc; }
 
         .badge {
             background: rgba(255, 255, 255, 0.05);
@@ -176,7 +184,7 @@
             font-weight: 600;
         }
 
-        /* OWNER */
+        /* OWNER SECTION */
         .owner-section {
             margin-top: 10px;
             padding: 30px 20px;
@@ -186,10 +194,10 @@
         }
 
         .owner-skin {
-            width: 150px;
+            width: 160px;
             height: auto;
             margin-bottom: 15px;
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.4));
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
         }
 
         .owner-title {
@@ -201,9 +209,9 @@
         .owner-quote {
             font-style: italic;
             color: #8fa3ad;
-            max-width: 400px;
+            max-width: 450px;
             line-height: 1.6;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
 
         .toast {
@@ -248,21 +256,21 @@
         
         <p class="description">
             The ultimate competitive PvP network in Asia. Experience custom rankings, 
-            clan wars, and optimized gameplay on our Economy and PvP servers.
+            clan wars, and optimized gameplay.
         </p>
 
         <div class="box-stack">
             <div class="card" onclick="copyIP()">
                 <div class="info">
                     <h3>allaysmp.pro</h3>
-                    <p id="server-status">ALLAYSMP.NET [ONLINE]</p>
+                    <p><span class="ip-sub">ALLAYSMP.PRO</span> <span class="season-sub">[ECONOMY VI]</span></p>
                 </div>
                 <div class="badge" id="player-count">... / 500</div>
             </div>
 
             <a href="https://discord.gg/PezKpUAAuA" class="card" target="_blank">
                 <div class="info">
-                    <p style="margin-bottom: 2px;">● LIVE COMMUNITY</p>
+                    <p style="margin-bottom: 2px; color: #fff; opacity: 0.6;">● LIVE COMMUNITY</p>
                     <h3 style="color: #fff;">Discord Server</h3>
                 </div>
                 <div class="badge" id="discord-count">... Online</div>
@@ -270,9 +278,9 @@
         </div>
 
         <div class="owner-section">
-            <img src="skin_render.png" class="owner-skin" alt="Owner Skin">
+            <img src="102015.jpg" class="owner-skin" alt="Owner Skin">
             <h2 class="owner-title">The Owner 👑</h2>
-            <p class="owner-quote">"I created AllaySMP to bring the most competitive and optimized PvP experience to the community."</p>
+            <p class="owner-quote">"I created AllaySMP from scratch to prove that a small idea, strong dedication, and continuous improvement can turn into a competitive and optimized SMP for everyone."</p>
         </div>
     </div>
 
@@ -292,21 +300,28 @@
 
         async function updateStats() {
             try {
-                // MC Status for Bedrock
-                const mcRes = await fetch("https://api.mcstatus.io/v2/status/bedrock/allaysmp.pro:19132");
+                // Using a more robust Bedrock query API to ensure accurate player counts
+                const mcRes = await fetch("https://api.mcstatus.io/v2/status/bedrock/allaysmp.pro");
                 const mcData = await mcRes.json();
+                
                 if(mcData.online) {
+                    // This pulls your actual live count (e.g., 50+)
                     document.getElementById("player-count").innerText = `${mcData.players.online} / ${mcData.players.max}`;
+                } else {
+                    document.getElementById("player-count").innerText = "OFFLINE";
                 }
+
                 // Discord Stats
                 const dsRes = await fetch("https://discord.com/api/v9/invites/PezKpUAAuA?with_counts=true");
                 const dsData = await dsRes.json();
                 document.getElementById("discord-count").innerText = `${dsData.approximate_presence_count} Online`;
-            } catch (e) { console.error("API Error"); }
+            } catch (e) { 
+                console.error("API Error"); 
+            }
         }
 
         updateStats();
-        setInterval(updateStats, 30000);
+        setInterval(updateStats, 30000); // Updates every 30 seconds
     </script>
 </body>
 </html>
