@@ -28,7 +28,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 5%; /* Increased padding for top spacing */
+            padding: 20px 5%;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -87,7 +87,7 @@
 
         /* HERO SECTION */
         .container { 
-            padding: 40px 20px; /* Restored top spacing here */
+            padding: 40px 20px; 
             display: flex; 
             flex-direction: column; 
             align-items: center; 
@@ -105,13 +105,14 @@
             text-transform: uppercase;
         }
 
+        /* SLIGHTLY SMALLER HEADLINE */
         h1 { 
-            font-size: clamp(3.5rem, 16vw, 6rem); 
+            font-size: clamp(3rem, 14vw, 5rem); 
             font-weight: 900; 
             line-height: 0.85; 
             margin-bottom: 20px; 
             text-transform: uppercase;
-            letter-spacing: -3px;
+            letter-spacing: -2.5px;
         }
         h1 span { display: block; color: #00adfc; }
 
@@ -157,12 +158,21 @@
             font-weight: 800;
         }
 
+        /* OWNER SECTION */
         .owner-section { padding: 20px; display: flex; flex-direction: column; align-items: center; }
         .owner-skin { width: 160px; height: auto; margin-bottom: 12px; filter: drop-shadow(0 15px 25px rgba(0,0,0,0.6)); }
         .owner-title { font-size: 1.8rem; font-weight: 800; margin-bottom: 10px; }
         .owner-quote { font-style: italic; color: #8fa3ad; max-width: 420px; line-height: 1.5; font-size: 1rem; }
 
-        /* TOAST NOTIFICATION */
+        /* DECORATIVE LOGO AT BOTTOM */
+        .bottom-logo {
+            width: 140px;
+            height: auto;
+            margin: 40px auto 0;
+            opacity: 0.8;
+            filter: drop-shadow(0 0 20px rgba(0, 173, 252, 0.3));
+        }
+
         .toast {
             position: fixed;
             bottom: 30px;
@@ -230,6 +240,8 @@
             <h2 class="owner-title">The Owner 👑</h2>
             <p class="owner-quote">"I created AllaySMP from scratch to prove that a small idea, strong dedication, and continuous improvement can turn into a competitive and optimized SMP for everyone."</p>
         </div>
+
+        <img src="logo.png" class="bottom-logo" alt="AllaySMP Decorative Logo">
     </div>
 
     <div class="toast" id="toast">IP COPIED: allaysmp.pro</div>
@@ -239,7 +251,6 @@
             document.getElementById("sideMenu").classList.toggle("active");
         }
 
-        // Auto-copy function restored
         function copyIP() {
             const ip = "allaysmp.pro";
             navigator.clipboard.writeText(ip).then(() => {
@@ -259,7 +270,7 @@
                 const dsRes = await fetch("https://discord.com/api/v9/invites/PezKpUAAuA?with_counts=true");
                 const dsData = await dsRes.json();
                 document.getElementById("discord-count").innerText = `${dsData.approximate_member_count} Members`;
-            } catch (e) { console.error("Error updating stats"); }
+            } catch (e) { console.error("Update Error"); }
         }
         updateStats();
         setInterval(updateStats, 20000);
